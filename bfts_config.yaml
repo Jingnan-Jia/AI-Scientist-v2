@@ -78,10 +78,10 @@ agent:
   # Options for summarizing findings and selecting the best node
   # If not specified, the default behavior will be used.
 
-  # summary:
-  #   model: gpt-4o
-  #   temp: 0.3
+  summary:
+    model: moonshot-v1-128k
+    temp: 0.3
 
-  # select_node:
-  #   model: gpt-4o
-  #   temp: 0.3
+  select_node:
+    model: moonshot-v1-128k
+    temp: 0.3

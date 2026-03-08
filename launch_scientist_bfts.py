@@ -97,7 +97,7 @@ def parse_arguments():
     parser.add_argument(
         "--model_citation",
         type=str,
-        default="gpt-4o-2024-11-20",
+        default="moonshot-v1-128k",
         help="Model to use for citation gathering",
     )
     parser.add_argument(
@@ -115,7 +115,7 @@ def parse_arguments():
     parser.add_argument(
         "--model_review",
         type=str,
-        default="gpt-4o-2024-11-20",
+        default="moonshot-v1-128k",
         help="Model to use for review main text and captions",
     )
     parser.add_argument(

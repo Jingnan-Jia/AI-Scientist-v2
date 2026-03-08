@@ -58,18 +58,19 @@ AVAILABLE_LLMS = [
     "ollama/qwen3:8b",
     "ollama/qwen3:32b",
     "ollama/qwen3:235b",
-
     "ollama/qwen2.5vl:8b",
     "ollama/qwen2.5vl:32b",
-
     "ollama/qwen3-coder:70b",
     "ollama/qwen3-coder:480b",
-
     # Deepseek models via Ollama
     "ollama/deepseek-r1:8b",
     "ollama/deepseek-r1:32b",
     "ollama/deepseek-r1:70b",
     "ollama/deepseek-r1:671b",
+    # ========== 改动1：添加Kimi 2.5模型到可用列表 ==========
+    "moonshot-v1-8k",
+    "moonshot-v1-32k",
+    "moonshot-v1-128k",
 ]
 
 
@@ -98,7 +99,25 @@ def get_batch_responses_from_llm(
     if msg_history is None:
         msg_history = []
 
-    if model.startswith("ollama/"):
+    # ========== 改动2：添加Kimi模型的批量调用逻辑 ==========
+    if model.startswith("moonshot-"):
+        new_msg_history = msg_history + [{"role": "user", "content": msg}]
+        response = client.chat.completions.create(
+            model=model,
+            messages=[
+                {"role": "system", "content": system_message},
+                *new_msg_history,
+            ],
+            temperature=temperature,
+            max_tokens=MAX_NUM_TOKENS,
+            n=n_responses,
+            stop=None,
+        )
+        content = [r.message.content for r in response.choices]
+        new_msg_history = [
+            new_msg_history + [{"role": "assistant", "content": c}] for c in content
+        ]
+    elif model.startswith("ollama/"):
         new_msg_history = msg_history + [{"role": "user", "content": msg}]
         response = client.chat.completions.create(
             model=model.replace("ollama/", ""),
@@ -214,7 +233,20 @@ def get_batch_responses_from_llm(
 
 @track_token_usage
 def make_llm_call(client, model, temperature, system_message, prompt):
-    if model.startswith("ollama/"):
+    # ========== 改动3：添加Kimi模型的单次调用逻辑 ==========
+    if model.startswith("moonshot-"):
+        return client.chat.completions.create(
+            model=model,
+            messages=[
+                {"role": "system", "content": system_message},
+                *prompt,
+            ],
+            temperature=temperature,
+            max_tokens=MAX_NUM_TOKENS,
+            n=1,
+            stop=None,
+        )
+    elif model.startswith("ollama/"):
         return client.chat.completions.create(
             model=model.replace("ollama/", ""),
             messages=[
@@ -277,7 +309,19 @@ def get_response_from_llm(
     if msg_history is None:
         msg_history = []
 
-    if "claude" in model:
+    # ========== 改动4：添加Kimi模型的单条回复逻辑 ==========
+    if model.startswith("moonshot-"):
+        new_msg_history = msg_history + [{"role": "user", "content": msg}]
+        response = make_llm_call(
+            client,
+            model,
+            temperature,
+            system_message=system_message,
+            prompt=new_msg_history,
+        )
+        content = response.choices[0].message.content
+        new_msg_history = new_msg_history + [{"role": "assistant", "content": content}]
+    elif "claude" in model:
         new_msg_history = msg_history + [
             {
                 "role": "user",
@@ -478,7 +522,17 @@ def extract_json_between_markers(llm_output: str) -> dict | None:
 
 
 def create_client(model) -> tuple[Any, str]:
-    if model.startswith("claude-"):
+    # ========== 改动5：添加Kimi模型的客户端配置 ==========
+    if model.startswith("moonshot-"):
+        print(f"Using Kimi API with model {model}.")
+        return (
+            openai.OpenAI(
+                api_key=os.environ.get("MOONSHOT_API_KEY", os.environ.get("OPENAI_API_KEY")),
+                base_url="https://api.moonshot.cn/v1",
+            ),
+            model,
+        )
+    elif model.startswith("claude-"):
         print(f"Using Anthropic API with model {model}.")
         return anthropic.Anthropic(), model
     elif model.startswith("bedrock") and "claude" in model:

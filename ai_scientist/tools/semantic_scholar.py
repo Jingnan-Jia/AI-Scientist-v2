@@ -36,13 +36,13 @@ class SemanticScholarSearchTool(BaseTool):
         super().__init__(name, description, parameters)
         self.max_results = max_results
         self.S2_API_KEY = os.getenv("S2_API_KEY")
-        if not self.S2_API_KEY:
-            warnings.warn(
-                "No Semantic Scholar API key found. Requests will be subject to stricter rate limits. "
-                "Set the S2_API_KEY environment variable for higher limits."
-            )
+        # 移除原有警告，改为在使用工具时判断（避免启动时冗余警告）
 
     def use_tool(self, query: str) -> Optional[str]:
+        # 核心修改1：无API Key时，直接跳过检索，返回提示
+        if not self.S2_API_KEY:
+            return "No Semantic Scholar API key found, skipping literature search."
+        # 有API Key时，正常执行检索
         papers = self.search_for_papers(query)
         if papers:
             return self.format_papers(papers)
@@ -59,8 +59,7 @@ class SemanticScholarSearchTool(BaseTool):
             return None
         
         headers = {}
-        if self.S2_API_KEY:
-            headers["X-API-KEY"] = self.S2_API_KEY
+        headers["X-API-KEY"] = self.S2_API_KEY  # 此时已确认有API Key，直接赋值
         
         rsp = requests.get(
             "https://api.semanticscholar.org/graph/v1/paper/search",
@@ -103,13 +102,12 @@ Abstract: {paper.get("abstract", "No abstract available.")}"""
 )
 def search_for_papers(query, result_limit=10) -> Union[None, List[Dict]]:
     S2_API_KEY = os.getenv("S2_API_KEY")
-    headers = {}
+    # 核心修改2：无API Key时，直接跳过检索，返回None（适配外部调用逻辑）
     if not S2_API_KEY:
-        warnings.warn(
-            "No Semantic Scholar API key found. Requests will be subject to stricter rate limits."
-        )
-    else:
-        headers["X-API-KEY"] = S2_API_KEY
+        print("No Semantic Scholar API key found, skipping literature search.")
+        return None
+    
+    headers = {"X-API-KEY": S2_API_KEY}
     
     if not query:
         return None

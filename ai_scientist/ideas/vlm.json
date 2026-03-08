@@ -1,0 +1,74 @@
+[
+    {
+        "Name": "autonomous_driving_failure_modes_workshop",
+        "Title": "I Can't Believe It's Not Better: Uncovering Failure Modes in Autonomous Driving Systems",
+        "Short Hypothesis": "Despite advancements in vision-language models and BEV-based autonomous driving systems, unexpected failures and robustness gaps persist in real-world deployments. This workshop aims to identify, discuss, and learn from such common failure modes and negative results.",
+        "Related Work": "While there has been significant progress in autonomous driving research, discussions around failure modes and negative results are often limited to case studies, lack systematic documentation, and are rarely shared across research communities. This workshop proposal aims to fill this gap by promoting open discussions, systematic categorization of failure cases, and cross-disciplinary learning.",
+        "Abstract": "The I Can't Believe It's Not Better (ICBINB) workshop series promotes transparent science and collective learning from failure in autonomous driving. Recent advancements in vision-language models, bird's-eye-view (BEV) perception, and large language models have reshaped autonomous driving research. However, real-world deployment consistently reveals unexpected failures, robustness gaps, and generalization limits. This workshop seeks to uncover common failure modes, surprising negative results, and practical challenges in applying these technologies to real-world autonomous driving. We invite submissions and discussions spanning algorithmic brittleness, evaluation pitfalls, dataset biases, optimization instabilities, safety risks, and deployment bottlenecks. By fostering cross-domain insights, we aim to build a more robust foundation for autonomous driving systems.",
+        "Experiments": "The workshop will feature invited talks, panel discussions, and open forums to identify and discuss failure modes across vision-language models, BEV perception, and autonomous driving systems. Attendees will be encouraged to submit anonymized case studies of system failures they have encountered. These will be categorized and summarized in a shared document to facilitate collective learning. Metrics for evaluating failure modes will be discussed, and a shared taxonomy will be developed to standardize the reporting of negative results and failure cases.",
+        "Risk Factors and Limitations": "The main risk is the reluctance of researchers and companies to share negative results and failure cases due to commercial sensitivity or concerns about reputation. To mitigate this, the workshop will emphasize the importance of learning from failure and the benefits of open sharing for accelerating progress in the field. Additionally, the workshop's findings will be synthesized into a special issue or journal article to provide a lasting resource for the community."
+    },
+    {
+        "Name": "autonomous_driving_failure_modes_workshop",
+        "Title": "I Can\u2019t Believe It\u2019s Not Better: Uncovering Failure Modes in Autonomous Driving Systems",
+        "Short Hypothesis": "Despite advancements in vision-language models and BEV-based autonomous driving systems, unexpected failures and robustness gaps persist in real-world deployments. This workshop aims to identify, discuss, and learn from such common failure modes and negative results.",
+        "Related Work": "While there has been significant progress in autonomous driving research, discussions around failure modes and negative results are often limited to case studies, lack systematic documentation, and are rarely shared across research communities. This workshop proposal aims to fill this gap by promoting open discussions, systematic categorization of failure cases, and cross-disciplinary learning. Recent literature has shown an increased interest in understanding model failures (e.g., in vision-language tasks), but this is not well-represented in autonomous driving, especially in the context of integrating vision, language, and spatial understanding.",
+        "Abstract": "The I Can\u2019t Believe It\u2019s Not Better (ICBINB) workshop series promotes transparent science and collective learning from failure in autonomous driving. Recent advancements in vision-language models, bird's-eye-view (BEV) perception, and large language models have reshaped autonomous driving research. However, real-world deployment consistently reveals unexpected failures, robustness gaps, and generalization limits. This workshop seeks to uncover common failure modes, surprising negative results, and practical challenges in applying these technologies to real-world autonomous driving. We invite submissions and discussions spanning algorithmic brittleness, evaluation pitfalls, dataset biases, optimization instabilities, safety risks, and deployment bottlenecks. By fostering cross-domain insights, we aim to build a more robust foundation for autonomous driving systems.",
+        "Experiments": "The workshop will feature invited talks, panel discussions, and open forums to identify and discuss failure modes across vision-language models, BEV perception, and autonomous driving systems. Attendees will be encouraged to submit anonymized case studies of system failures they have encountered. These will be categorized and summarized in a shared document to facilitate collective learning. Metrics for evaluating failure modes will be discussed, and a shared taxonomy will be developed to standardize the reporting of negative results and failure cases.",
+        "Risk Factors and Limitations": "The main risk is the reluctance of researchers and companies to share negative results and failure cases due to commercial sensitivity or concerns about reputation. To mitigate this, the workshop will emphasize the importance of learning from failure and the benefits of open sharing for accelerating progress in the field. Additionally, the workshop's findings will be synthesized into a special issue or journal article to provide a lasting resource for the community. Another limitation is the possibility of overwhelming participants with too many case studies, leading to a lack of focus on specific issues; hence, a structured approach to categorizing and prioritizing discussions will be crucial."
+    },
+    {
+        "Name": "autonomous_driving_robustness_challenges",
+        "Title": "Beyond Simulated Success: Identifying and Addressing Real-world Robustness Challenges in Autonomous Driving",
+        "Short Hypothesis": "Autonomous driving systems that perform well in simulated environments often fail in real-world conditions due to unforeseen complexities and edge cases. A systematic analysis of these failures can lead to more robust system designs.",
+        "Related Work": "Previous work has explored the performance of autonomous driving systems in simulated environments and has identified some limitations in real-world scenarios. However, there is a lack of systematic studies that specifically aim to uncover the nuances of how and why these systems fail in real-world conditions. This proposal aims to fill this gap by conducting large-scale experiments in real-world settings and analyzing the failures of state-of-the-art autonomous driving systems.",
+        "Abstract": "Autonomous driving has seen significant advancements with systems demonstrating promising results in controlled simulation environments. However, the translation of these successes to real-world deployment is fraught with challenges due to the complexity and variability of real-world conditions. This research aims to systematically investigate the robustness of current autonomous driving systems in real-world scenarios. We hypothesize that despite performing well in simulations, these systems will exhibit failures when confronted with real-world edge cases and complexities. Through large-scale real-world testing and failure analysis, we aim to uncover common failure modes and provide insights into enhancing the robustness of autonomous driving systems.",
+        "Experiments": [
+            "Conduct large-scale testing of state-of-the-art autonomous driving systems in various real-world scenarios, including different weather conditions, traffic densities, and unexpected events.",
+            "Collect and categorize failure cases, analyzing the circumstances leading to system failures.",
+            "Develop metrics to quantify the frequency and severity of failures across different driving conditions and system architectures.",
+            "Investigate the root causes of failures through detailed post-mortem analyses, including sensor noise, algorithmic limitations, and dataset biases."
+        ],
+        "Risk Factors and Limitations": [
+            "The main risk is the high cost and logistical challenges of conducting large-scale real-world testing.",
+            "There is potential for undersampling certain rare but critical real-world conditions, which may not be adequately represented in the test scenarios.",
+            "The analysis of failures may be limited by the opacity of some proprietary autonomous driving systems, which could impede a thorough understanding of their failure modes."
+        ]
+    },
+    {
+        "Name": "autonomous_driving_robustness_challenges",
+        "Title": "Real-world Robustness in Autonomous Driving: A Systematic Failure Analysis",
+        "Short Hypothesis": "Autonomous driving systems that excel in simulated environments often face unforeseen failures in real-world conditions. A systematic analysis of these real-world failures can provide insights into enhancing system robustness.",
+        "Related Work": "While significant advancements have been made in autonomous driving, with systems showing promising results in simulated environments, there is a gap in understanding how these systems perform in real-world scenarios. Existing literature often focuses on performance metrics in controlled settings, while real-world robustness, particularly the analysis of failure modes, is under-explored.",
+        "Abstract": "Despite promising results in simulated environments, autonomous driving systems face significant challenges when deployed in real-world conditions. This research aims to systematically investigate the robustness of current autonomous driving systems in real-world scenarios, hypothesizing that these systems will exhibit failures when confronted with real-world edge cases and complexities. Through large-scale real-world testing and failure analysis, we aim to uncover common failure modes and provide insights into enhancing the robustness of autonomous driving systems.",
+        "Experiments": [
+            "Conduct large-scale testing of state-of-the-art autonomous driving systems in various real-world scenarios, including different weather conditions, traffic densities, and unexpected events.",
+            "Collect and categorize failure cases, analyzing the circumstances leading to system failures.",
+            "Develop metrics to quantify the frequency and severity of failures across different driving conditions and system architectures.",
+            "Investigate the root causes of failures through detailed post-mortem analyses, including sensor noise, algorithmic limitations, and dataset biases."
+        ],
+        "Risk Factors and Limitations": [
+            "The main risk is the high cost and logistical challenges of conducting large-scale real-world testing.",
+            "There is potential for undersampling certain rare but critical real-world conditions, which may not be adequately represented in the test scenarios.",
+            "The analysis of failures may be limited by the opacity of some proprietary autonomous driving systems, which could impede a thorough understanding of their failure modes."
+        ]
+    },
+    {
+        "Name": "real_world_autonomous_driving_resilience",
+        "Title": "Real-world Resilience: Unveiling and Overcoming Failures in Autonomous Driving",
+        "Short Hypothesis": "Despite significant advancements in autonomous driving technology, real-world application often reveals hidden system vulnerabilities and failure modes not captured in simulated environments. This research aims to systematically identify and address these real-world failure modes to enhance system robustness.",
+        "Related Work": "While the literature is rich with performance evaluations in controlled settings, the systematic documentation and analysis of real-world failures in autonomous driving systems remain sparse. This proposal seeks to bridge this gap by conducting extensive real-world tests and analyzing the discrepancies between simulated performance and real-world outcomes.",
+        "Abstract": "Autonomous driving systems have made remarkable progress, yet their real-world deployment continues to uncover unforeseen challenges and failures not apparent in simulations. This research aims to reveal and address these real-world failure modes through systematic testing and analysis. We hypothesize that these systems will encounter unique failure scenarios in real-world conditions, which can provide critical insights for enhancing robustness. This study will involve conducting large-scale real-world tests, categorizing and analyzing failures, and developing metrics to quantify failure frequency and severity. This approach will help uncover common failure modes and their root causes, ultimately contributing to the development of more reliable autonomous driving systems.",
+        "Experiments": [
+            "Conduct large-scale testing of autonomous driving systems across diverse real-world scenarios, including variable weather conditions, traffic densities, and unexpected events.",
+            "Collect and categorize failure cases, analyzing the specific conditions leading to system failures.",
+            "Develop and apply metrics to quantify the occurrence and impact of failures across different driving conditions and system architectures.",
+            "Investigate root causes of failures through post-mortem analyses, focusing on sensor noise, algorithmic limitations, and dataset biases."
+        ],
+        "Risk Factors and Limitations": [
+            "Conducting large-scale real-world testing is resource-intensive and logistically challenging.",
+            "There is a risk of underrepresenting rare but critical real-world conditions that may not be adequately captured in the test scenarios.",
+            "The analysis of failures may be constrained by the proprietary nature of some autonomous driving systems, impeding a thorough understanding of their failure modes."
+        ]
+    }
+]
